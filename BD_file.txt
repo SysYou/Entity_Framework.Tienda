@@ -1,0 +1,40 @@
+---DataBase---
+
+CREATE DATABASE [Tienda]
+CONTAINMENT = NONE
+GO
+
+
+
+---Tabla---
+
+USE [Tienda]
+GO
+
+/****** Object:  Table [dbo].[Ropa]    Script Date: 3/16/2018 1:16:47 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Ropa](
+	[iId] [int] IDENTITY(1,1) NOT NULL,
+	[vNombre] [varchar](50) NULL,
+	[iGenero] [int] NULL,
+	[vCategoria] [varchar](40) NULL,
+	[dValor] [decimal](18, 5) NULL,
+	[bDisponible] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[iId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO

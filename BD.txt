@@ -1,0 +1,133 @@
+---Tabla---
+
+CREATE TABLE [dbo].[Ropa](
+	[iId] int IDENTITY(1,1) PRIMARY KEY,
+	[vNombre] [varchar](1) NULL,
+	[iGenero] [int] NULL,
+	[vCategoria] [varchar](1) NULL,
+	[dValor] [decimal](18,5) NULL,
+	[bDisponible] [bit] NULL		
+) ON [PRIMARY]
+
+
+---sp_Insertar---
+
+USE [Tienda]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Insertar]    Script Date: 17/06/2017 13:07:06 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE OR ALTER PROCEDURE [dbo].[sp_Insertar]
+	-- Add the parameters for the stored procedure here
+
+@vNombre varchar(100),
+@iGenero int,
+@vCategoria varchar(100),
+@dValor decimal,
+@bDisponible bit
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+INSERT INTO Ropa
+                         (vNombre,iGenero,vCategoria,dValor,bDisponible)
+VALUES        (@vNombre,@iGenero,@vCategoria,@dValor,@bDisponible);
+
+END
+
+---sp_Actualizar---
+
+
+USE [Tienda]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Actualizar]    Script Date: 17/06/2017 13:05:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE OR ALTER   PROCEDURE [dbo].[sp_Actualizar]
+	-- Add the parameters for the stored procedure here
+@iId int,
+@vNombre varchar(100),
+@iGenero int,
+@vCategoria varchar(100),
+@dValor decimal,
+@bDisponible bit
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+
+UPDATE Ropa
+SET vNombre = @vNombre, iGenero=@iGenero, vCategoria= @vCategoria,dValor=@dValor,bDisponible=@bDisponible
+WHERE (iId= @iId);
+
+END
+
+
+---sp_Eliminar---
+
+USE [Tienda]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Eliminar]    Script Date: 17/06/2017 13:06:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE OR ALTER   PROCEDURE [dbo].[sp_Eliminar]
+	-- Add the parameters for the stored procedure here
+
+@iId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+
+-- Dar de baja 
+DELETE  FROM  Ropa
+WHERE (iId= @iId);
+
+END
+
+
+---sp_Mostrar---
+
+
+USE [Tienda]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Mostrar]    Script Date: 17/06/2017 13:07:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE OR ALTER PROCEDURE [dbo].[sp_Mostrar]
+
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select * from Ropa;
+END
+
+
+---FIN---
+
+
+
